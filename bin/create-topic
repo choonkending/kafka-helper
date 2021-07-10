@@ -1,0 +1,12 @@
+#!/bin/bash
+set -eufo pipefail
+
+echo ""
+echo "📔 Name of topic:"
+
+read topic_name
+
+kafka-topics --bootstrap-server $BOOTSTRAP_BROKERS \
+  --create --topic $topic_name \
+  --replication-factor $DEFAULT_REPLICATION_FACTOR \
+  --partitions $DEFAULT_PARTITIONS_NUMBER

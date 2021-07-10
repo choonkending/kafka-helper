@@ -1,0 +1,14 @@
+#!/bin/bash
+set -eufo pipefail
+
+echo ""
+echo "👋 Welcome 👋"
+echo "Starting services . . . "
+echo ""
+
+docker compose up --detach zookeeper broker
+
+echo "😴 Sleeping for 30 seconds while the kafka broker boots up"
+sleep 30
+
+docker compose run --rm kafka-helper bash
